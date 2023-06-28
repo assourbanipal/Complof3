@@ -33,12 +33,18 @@
               filteredNodes.some(node => node.id === edge.source) ||
               filteredNodes.some(node => node.id === edge.target)
             );
-            
-            // Display results 
-            filteredNodes.forEach(node => {
-              var result = document.createElement('div');
-              result.textContent = node.label;
-              results.appendChild(result);
+            // Get neighboring nodes
+      var neighbors = edges.reduce((acc, edge) => {
+        if (edge.source !== edge.target) {
+          acc.push(data.nodes.find(n => n.id === edge.source)); 
+          acc.push(data.nodes.find(n => n.id === edge.target));
+        }
+        return acc;
+      }, []);
+      
+      // Display results 
+      filteredNodes.forEach(node => { /* ... */ });
+      neighbors.forEach(node => { /* ... */ });
             });
           });
       });
