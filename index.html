@@ -12,41 +12,41 @@
       // Get search input 
       var searchInput = document.getElementById('search-input');
       
-      // On input, search data  
       searchInput.addEventListener('input', function(e) {
-        var query = e.target.value.toLowerCase();
-        
-        // Fetch Gephi data 
-        fetch('data.json')
-          .then(response => response.json())
-          .then(data => {
-            var results = document.getElementById('results');
-            results.textContent = '';
-            
-            // Filter nodes by search term
-            var filteredNodes = data.nodes.filter(node => 
-              node.label.toLowerCase().includes(query)
-            );
-            
-            // Get edges for filtered nodes
-            var edges = data.edges.filter(edge =>
-              filteredNodes.some(node => node.id === edge.source) ||
-              filteredNodes.some(node => node.id === edge.target)
-            );
-            // Get neighboring nodes
-      var neighbors = edges.reduce((acc, edge) => {
-        if (edge.source !== edge.target) {
-          acc.push(data.nodes.find(n => n.id === edge.source)); 
-          acc.push(data.nodes.find(n => n.id === edge.target));
+      var query = e.target.value.toLowerCase();
+  
+  // Fetch Gephi data 
+      fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+          var results = document.getElementById('results');
+          results.textContent = '';
+      
+      // Filter nodes by search term
+          var filteredNodes = data.nodes.filter(node => 
+            node.label.toLowerCase().includes(query)
+      );
+      
+      // Get edges for filtered nodes
+          var edges = data.edges.filter(edge =>
+            filteredNodes.some(node => node.id === edge.source) ||
+            filteredNodes.some(node => node.id === edge.target)
+      );
+      
+      // Get neighboring nodes
+          var neighbors = edges.reduce((acc, edge) => {
+            if (edge.source !== edge.target) {
+              acc.push(data.nodes.find(n => n.id === edge.source)); 
+              acc.push(data.nodes.find(n => n.id === edge.target));
         }
         return acc;
       }, []);
       
       // Display results 
-      filteredNodes.forEach(node => { /* ... */ });
-      neighbors.forEach(node => { /* ... */ });
-            });
-          });
+          filteredNodes.forEach(node => { /* ... */ });
+          neighbors.forEach(node => { /* ... */ });
+    });
+});
       });
     </script>
   </body>
