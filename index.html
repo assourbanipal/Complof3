@@ -17,7 +17,7 @@
         var query = e.target.value.toLowerCase();
         
         // Fetch Gephi data 
-        fetch('gephi_data.json')
+        fetch('data.json')
           .then(response => response.json())
           .then(data => {
             var results = document.getElementById('results');
