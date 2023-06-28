@@ -9,42 +9,34 @@
     <div id="results"></div>
     
     <script>
-      // Query string to object
-      function parseQueryString(queryString) {
-        var query = {};
-        var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
-        for (var i = 0; i < pairs.length; i++) {
-            var pair = pairs[i].split('=');
-            query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-        }
-        return query;
-      }
-      
-      // Get query string from URL
-      var query = parseQueryString(window.location.search);
-      
       // Get search input 
       var searchInput = document.getElementById('search-input');
-      searchInput.value = query.term; 
       
-      // Fetch data file and filter by search term
-      fetch('data.json')
-        .then(response => response.json())
-        .then(data => {
-          var results = document.getElementById('results');
-          
-          // Filter data by search term
-          var filteredData = data.filter(obj => 
-            obj.name.toLowerCase().includes(query.term.toLowerCase())
-          );
-          
-          // Display results
-          filteredData.forEach(obj => {
-            var result = document.createElement('div');
-            result.textContent = obj.name;
-            results.appendChild(result);
+      // On input, search data  
+      searchInput.addEventListener('input', function(e) {
+        var query = e.target.value.toLowerCase();
+        
+        // Fetch data 
+        fetch('data.json')
+          .then(response => response.json())
+          .then(data => {
+            var results = document.getElementById('results');
+            results.textContent = '';
+            
+            // Filter data by search term
+            var filteredData = data.filter(obj => 
+              obj.name.toLowerCase().includes(query) ||
+              obj.description.toLowerCase().includes(query)
+            );
+            
+            // Display results 
+            filteredData.forEach(obj => {
+              var result = document.createElement('div');
+              result.textContent = obj.name + ': ' + obj.description;
+              results.appendChild(result);
+            });
           });
-        });
+      });
     </script>
   </body>
 </html>
