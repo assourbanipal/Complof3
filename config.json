@@ -9,8 +9,8 @@
   },
   "text": {
     "more": "osef",
-    "intro": "osef\t\t\t",
-    "title": ""
+    "intro": "osef\t\t\t\t",
+    "title": "osef"
   },
   "legend": {
     "edgeLabel": "osef",
@@ -20,7 +20,7 @@
   "features": {
     "search": true,
     "groupSelectorAttribute": false,
-    "hoverBehavior": "default"
+    "hoverBehavior": "dim"
   },
   "informationPanel": {
     "groupByEdgeDirection": false,
