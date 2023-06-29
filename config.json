@@ -2,9 +2,6 @@
   "type": "network",
   "version": "1.0",
   "data": "data.json",
-  
-  },
-  
   },
   "features": {
     "search": true,
@@ -18,5 +15,4 @@
   
     
     }
-  }
-}
+
