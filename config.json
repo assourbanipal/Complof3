@@ -10,7 +10,7 @@
   "text": {
     "more": "osef",
     "intro": "osef\t\t\t",
-    "title": ""
+    "title": "Rézo Bourjwa"
   },
   "legend": {
     "edgeLabel": "osef",
@@ -40,10 +40,10 @@
       "defaultLabelSize": 14
     },
     "graphProperties": {
-      "maxEdgeSize": 0.5,
-      "minEdgeSize": 0.2,
+      "maxEdgeSize": 20,
+      "minEdgeSize": 1,
       "minNodeSize": 1,
-      "maxNodeSize": 7
+      "maxNodeSize": 20
     },
     "mouseProperties": {
       "maxRatio": 20,
