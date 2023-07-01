@@ -28,7 +28,7 @@ html,body {
 
 .sigma-parent {
 	position: relative;
-	height: 10%;
+	height: 100%;
 }
 
 .sigma-expand {
@@ -60,7 +60,7 @@ canvas#sigma_bg_1 {
     bottom:0;
     top:0;
     right:0;
-	width: 20px;
+	width: 240px;
 	background-color: #fff;
 	margin: 0;
 	word-wrap: break-word;
